@@ -47,7 +47,7 @@ class CustomerSystem{
         .concat("3. Report on total Sales (Not done in this part)\n")
         .concat("4. Check for fraud in sales data (Not done in this part)\n")
         .concat("9. Quit\n")
-        .concat("Enter menu option (1-9)\n")
+        .concat("Enter menu option (1-9)")
         );
     }
     /*
@@ -56,6 +56,16 @@ class CustomerSystem{
     * This method may also be broken down further depending on your algorithm
     */
     public static void enterCustomerInfo() {
+        Scanner reader = new Scanner(System.in);
+        
+        System.out.println("What is your first name?");
+        String FirstName = reader.nextLine();
+
+        System.out.println("What is your Last Name?");
+        String LastName = reader.nextLine();
+
+        System.out.println("What is the city you live on?");
+        String city = reader.nextLine();
     }
     /*
     * This method may be edited to achieve the task however you like.
