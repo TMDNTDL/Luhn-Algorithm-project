@@ -112,10 +112,8 @@ class CustomerSystem{
      */
     public static void validateCreditCard(){
     }
-    /*
-     * This method may be edited to achieve the task however you like.
-     * The method may not nesessarily be a void return type
-     * This method may also be broken down further depending on your algorithm
+    /**
+     * Generates the customer's data file - Kalen.
      */
     public static void generateCustomerDataFile(){
         Scanner customerScanner = new Scanner(System.in);
