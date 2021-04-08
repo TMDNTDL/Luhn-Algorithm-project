@@ -68,12 +68,28 @@ class CustomerSystem{
         System.out.println("What is the city you live on?");
         String city = reader.nextLine();
     }
-    /*
-    * This method may be edited to achieve the task however you like.
-    * The method may not nesessarily be a void return type
-    * This method may also be broken down further depending on your algorithm
-    */
-    public static void validatePostalCode(){
+   /**
+     * Validates a postal code - Kalen
+     * @param postalCode the queried postal code.
+     * @return true if it is a valid postal code, false otherwise.
+     */
+    public static boolean validatePostalCode(String postalCode) {
+        if (postalCode.length() != 3) return false; // Check length.
+        Scanner postalScanner = null;
+        try {
+            postalScanner = new Scanner(new File("src/postal_codes.csv"));
+        } catch(FileNotFoundException s)  {
+            System.out.println("postal_codes.csv does not exist. Please insure postal_codes.csv is inside the src folder.");
+        }
+        if (postalScanner != null) { // Check if the scanner is properly initialized.
+            postalScanner.nextLine(); // Skip the first line since it isn't valid data.
+            while (postalScanner.hasNextLine()) { // If there are more lines.
+                // We already know that the postal code is the first 3 digits of every line, so compare those 3 digits to the queried postal code.
+                // Don't need to use delimiter as that will be a waste of iterations since we already know that it will ALWAYS be the first 3 of each line. Doing it line by line will be faster.
+                if ((postalScanner.nextLine().substring(0, 3)).equals(postalCode)) return true;
+            }
+        }
+        return false;
     }
     /*
     * This method may be edited to achieve the task however you like.
