@@ -5,6 +5,7 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 // More packages may be imported in the space below
 
@@ -117,7 +118,29 @@ class CustomerSystem{
      * This method may also be broken down further depending on your algorithm
      */
     public static void generateCustomerDataFile(){
-
+        Scanner customerScanner = new Scanner(System.in);
+        String fileName, fileLocation;
+        System.out.println("|| CUSTOMER DATA GENERATION ||");
+        if (userId == 0){ // There isn't input yet.
+            System.out.println("PLEASE ENTER YOUR USER DATA FIRST");
+            return;
+        }
+        System.out.printf("%s: ", "Please provide the output file name");
+        fileName = customerScanner.nextLine();
+        System.out.printf("%s: ", "Please provide the output location");
+        fileLocation = customerScanner.nextLine();
+        try{
+            String exportLocation = String.format("%s\\%s.csv", fileLocation, fileName);
+            PrintWriter dataWriter = new PrintWriter(new File(exportLocation));
+            StringBuilder stringBuilder = new StringBuilder(); // Use a string builder.
+            stringBuilder.append("Id,First Name,Last Name,City,Postal Code,Credit Card\n"); // Append the header.
+            stringBuilder.append(String.format("%d,%s,%s,%s,%s,%s", userId, userFirstName, userLastName, userCity, userPostalCode, userCreditCard));
+            dataWriter.write(stringBuilder.toString()); // Write to file.
+            dataWriter.close(); // Close the reader.
+            System.out.printf("|| DONE DATA EXPORT TO LOCATION: %s ||\n", exportLocation);
+        } catch (FileNotFoundException e) { // Catch the exception
+            System.out.println("DATA EXPORT HAS FAILED: THIS COULD BE BECAUSE THE FILE ALREADY EXISTS OR THAT THE LOCATION IS INVALID");
+        }
     }
     /*******************************************************************
      *       ADDITIONAL METHODS MAY BE ADDED BELOW IF NECESSARY         *
