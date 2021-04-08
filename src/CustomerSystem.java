@@ -111,6 +111,34 @@ class CustomerSystem{
      * This method may also be broken down further depending on your algorithm
      */
     public static void validateCreditCard(){
+        System.out.println("CreditCard Number: " + Number);
+        
+        String reverse = ""; // Converting Char to String
+
+        for(int i = Number.length() -1; i>=0; i--){
+            
+            reverse = reverse + Number.charAt(i);
+        }
+        System.out.println("Reversed CredutCard Number is: " + reverse);
+        
+        // sum of the odd number
+        int sum1 = 0;
+        
+        int len = reverse.length();
+
+        for (int i = 0; i < len; i++){
+            if(i%2 ==0){
+                char dig = reverse.charAt(i);
+                String str = "";
+                str = str + dig;
+                int OddNumber = Integer.valueOf(str);
+                sum1 += OddNumber;
+            }
+            
+        }
+        System.out.println(sum1);
+
+        EvenNumber(reverse);
     }
     /**
      * Generates the customer's data file - Kalen.
