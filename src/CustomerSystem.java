@@ -143,4 +143,84 @@ class CustomerSystem{
     /*******************************************************************
      *       ADDITIONAL METHODS MAY BE ADDED BELOW IF NECESSARY         *
      *******************************************************************/
+    public static void EvenNumber(String ReverseNumber){
+        
+
+        int len = ReverseNumber.length();
+        
+        System.out.print("Even digits: \t\t");
+
+        for (int i = 1; i < len; i+=2){
+            if(i+2>=len){
+                System.out.println(ReverseNumber.charAt(i));
+            }
+
+            else{
+                System.out.print(ReverseNumber.charAt(i)+", ");
+            }
+        }
+
+        System.out.print("Double digits: \t\t");
+
+        for (int i = 1; i < len; i+=2){
+            if(i+2>=len){
+                System.out.println(Character.getNumericValue(ReverseNumber.charAt(i))*2);
+            }
+
+            else{
+                System.out.print(Character.getNumericValue(ReverseNumber.charAt(i))*2 +", ");
+            }
+        }
+
+        System.out.print("Sum the digits>9: \t");
+
+        for (int i = 1; i < len; i+=2){
+            if(i+2>=len){
+                if(Character.getNumericValue(ReverseNumber.charAt(i))*2>9){
+                    int num=Character.getNumericValue(ReverseNumber.charAt(i))*2;
+                    System.out.println(num%10+num/10);
+                }else{
+                    System.out.println(Character.getNumericValue(ReverseNumber.charAt(i))*2);
+                }
+            }
+
+            else{
+                if(Character.getNumericValue(ReverseNumber.charAt(i))*2>9){
+                    int num=Character.getNumericValue(ReverseNumber.charAt(i))*2;
+                    System.out.print(num%10+num/10+", ");
+                }else{
+                    System.out.print(Character.getNumericValue(ReverseNumber.charAt(i))*2+", ");
+                }
+            }
+        }
+
+        System.out.print("Sum the new digits: \t");
+
+        int sum2=0;
+
+        for (int i = 1; i < len; i+=2){
+            if(i+2>=len){
+                if(Character.getNumericValue(ReverseNumber.charAt(i))*2>9){
+                    int num=Character.getNumericValue(ReverseNumber.charAt(i))*2;
+                    System.out.print(num%10+num/10);
+                    sum2+=num%10+num/10;
+                }else{
+                    System.out.print(Character.getNumericValue(ReverseNumber.charAt(i))*2);
+                    sum2+=Character.getNumericValue(ReverseNumber.charAt(i))*2;
+                }
+            }
+
+            else{
+                if(Character.getNumericValue(ReverseNumber.charAt(i))*2>9){
+                    int num=Character.getNumericValue(ReverseNumber.charAt(i))*2;
+                    System.out.print(num%10+num/10+" +");
+                    sum2+=num%10+num/10;
+                }else{
+                    System.out.print(Character.getNumericValue(ReverseNumber.charAt(i))*2+" +");
+                    sum2+=Character.getNumericValue(ReverseNumber.charAt(i))*2;
+                }
+            }
+        }
+        System.out.println("="+sum2+"=sum2");
+    }
 }
